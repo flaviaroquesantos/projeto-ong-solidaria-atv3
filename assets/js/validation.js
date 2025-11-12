@@ -4,11 +4,7 @@
  * Garante que campos obrigatórios sejam preenchidos antes do envio.
  */
 
-// Seletor do formulário de cadastro (Ajuste o ID se for diferente no seu HTML)
-// *Você informou que seu ID é 'form-cadastro' em uma mensagem anterior. Se for esse o caso,
-// você deve trocar 'cadastro-form' por 'form-cadastro'. Vou manter o que você enviou, mas
-// verifique essa linha em seu código se o JS não inicializar.*
-const formCadastro = document.getElementById('cadastro-form'); 
+const formCadastro = document.getElementById('form-cadastro'); 
 
 // --- FUNÇÕES DE UTILIY (DOM) ---
 
