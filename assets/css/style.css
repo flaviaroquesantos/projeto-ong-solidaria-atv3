@@ -1,0 +1,444 @@
+/* Importa o arquivo de variáveis de design system */
+@import url('variables.css'); 
+
+/* =========================== */
+/* 1. ESTILOS GLOBAIS E RESET */
+/* =========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Aplica a cor de fundo clara e a fonte base definidas nas variáveis */
+    background-color: var(--color-neutral-light); 
+    color: var(--color-neutral-dark);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+}
+
+/* Garante que o conteúdo principal (main) centralize */
+.container {
+    max-width: 1200px; /* Largura máxima comum para sites */
+    width: 90%;
+    margin: 0 auto;
+    padding: var(--spacing-4) 0; /* 32px de padding vertical */
+}
+
+/* Estilos básicos para links e listas */
+a {
+    color: var(--color-primary-base);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Estilos de Tipografia Hierárquica */
+h1 {
+    font-size: var(--font-size-h1);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-3); /* 24px */
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+    margin-bottom: var(--spacing-2); /* 16px */
+    /* Remova qualquer "width: X%" ou "max-width" aqui, se houver */
+}
+
+h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-1); /* 8px */
+}
+
+
+/* =========================== */
+/* 2. LAYOUT DO CABEÇALHO (HEADER) */
+/* =========================== */
+header {
+    background-color: var(--color-white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Centraliza o conteúdo (o nav) dentro do header */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-2) 0;
+}
+
+/* Utiliza Flexbox para alinhar logo e navegação */
+.main-nav {
+    display: flex;
+    justify-content: space-between; /* Espaço entre logo e menu */
+    align-items: center; /* Alinha verticalmente */
+    
+    /* Centraliza o conteúdo (igual ao .container) */
+    max-width: 1200px; 
+    width: 90%;
+    margin: 0 auto;
+}
+
+.main-nav img {
+    height: 120px; /* Tamanho do logo */
+}
+
+/* Navegação Principal (Flexbox) */
+.main-nav ul {
+    display: flex;
+    list-style: none; /* Garante que os pontos sumam */
+    gap: var(--spacing-3); /* 24px de espaço entre os itens */
+}
+
+/* =========================== */
+/* 3. LAYOUT PRINCIPAL E GRID */
+/* =========================== */
+
+main {
+    padding: var(--spacing-5) var(--spacing-2); /* 48px vertical, 16px horizontal */
+    /* Garante que o conteúdo principal use toda a área, mas com margem para responsividade */
+}
+
+/* Títulos de Seção */
+.page-title, .oportunidades-voluntario, .captacao-recursos {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto var(--spacing-5) auto; /* Centraliza e adiciona 48px de margem inferior */
+}
+
+/* Aplicando o CSS GRID para a Lista de Projetos */
+#projetos-sociais {
+    /* Centraliza o container principal */
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Onde a mágica do Grid acontece: Cria a estrutura de 12 colunas */
+.project-list {
+    display: grid;
+    /* 12 colunas de grid para a responsividade (exigência da Entrega 2) */
+    grid-template-columns: repeat(12, 1fr); 
+    gap: var(--spacing-4); /* 32px de espaço entre os itens */
+    margin-top: var(--spacing-4);
+}
+
+/* 4. Estilos dos Cards de Projetos (Artigos) e Aside (Filtro) */
+
+/* Os artigos de projeto (cards) ocupam 8 das 12 colunas na visualização Desktop */
+.projeto-item {
+    /* Ocupa 8 colunas e se alinha com a primeira coluna */
+    grid-column: 1 / span 8; 
+    
+    background-color: var(--color-white);
+    padding: var(--spacing-4);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: var(--spacing-4); /* Espaçamento entre os cards */
+    
+    /* Utiliza Flexbox para organizar o conteúdo dentro do card */
+    display: flex;
+    flex-direction: column;
+}
+
+/* O filtro lateral (aside) ocupa 4 das 12 colunas */
+.categorias-projeto {
+    /* Ocupa da coluna 9 até o final (coluna 13) */
+    grid-column: 9 / span 4; 
+    
+    background-color: var(--color-neutral-light);
+    padding: var(--spacing-4);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.categorias-projeto ul {
+    margin-top: var(--spacing-2);
+}
+
+.categorias-projeto li {
+    padding: var(--spacing-1) 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Estilo para a imagem dentro do card */
+.projeto-item figure {
+    margin-top: var(--spacing-2);
+}
+
+.projeto-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* =========================== */
+/* 5. ESTILOS DE BOTÕES E CTAS */
+/* =========================== */
+
+.cta-button {
+    display: block; /* Mude de inline-block para block para aceitar margens auto */
+    background-color: var(--color-primary-base);
+    color: var(--color-white);
+    padding: var(--spacing-3) var(--spacing-4);
+    border-radius: 4px;
+    font-size: var(--font-size-lg);
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    
+    /* Centraliza o botão (como ele é 'display: block', as margens auto funcionam) */
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content; /* Faz com que o botão não ocupe 100% da largura */
+    
+    /* ESPAÇAMENTO: Cria a separação da imagem acima */
+    margin-top: var(--spacing-5); /* 48px de espaço */
+}
+
+.cta-button:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px); 
+}
+
+/* ... o restante dos estilos (oportunidade-item, etc.) vai abaixo ... */
+
+.cta-button:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px); 
+}
+
+/* ... o restante dos estilos (oportunidade-item, etc.) vai abaixo ... */
+
+/* Estilização para as oportunidades de voluntariado (Flexbox) */
+.oportunidade-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-3);
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: var(--spacing-2);
+    background-color: var(--color-white);
+}
+
+.oportunidade-item h4 {
+    margin-bottom: 0;
+    color: var(--color-primary-dark);
+}
+
+/* ======================================= */
+/* 6. ESTILOS DE COMPONENTES ESPECÍFICOS E FOOTER */
+/* ======================================= */
+
+/* Hero Section (index.html) */
+.hero-section {
+    /* Aplica a cor de fundo clara e a cor da fonte, usando variáveis */
+    background-color: var(--color-primary-light);
+    color: var(--color-neutral-dark);
+    padding: var(--spacing-6) 0; /* 64px */
+    text-align: center;
+}
+
+.hero-section h1 {
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-3);
+}
+
+.hero-section p {
+    max-width: 800px;
+    margin: 0 auto var(--spacing-4) auto;
+}
+
+.hero-section .hero-image {
+    width: 100%;
+    max-width: 800px; 
+    height: auto;
+    border-radius: var(--spacing-1);
+    
+    /* Define o espaçamento vertical para zero ou mínimo, pois o botão vai dar o espaço */
+    margin-top: var(--spacing-4); 
+    margin-bottom: 0;
+    
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Missão, Visão, Valores (MVV) - Layout Flexbox */
+.institucional-mvv {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-4);
+    padding: var(--spacing-5) 0;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto; /* Centraliza a seção MVV */
+    flex-wrap: wrap; 
+}
+
+.institucional-mvv article {
+    flex: 1;
+    min-width: 250px;
+    /* ... (mantenha o restante da estilização de cores e padding) ... */
+}
+.institucional-mvv article {
+    flex: 1;
+    min-width: 250px;
+    background-color: var(--color-white);
+    padding: var(--spacing-4);
+    /* Adiciona a cor primária como destaque lateral */
+    border-left: 3px solid var(--color-primary-base); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.institucional-mvv h3 {
+    color: var(--color-primary-base);
+    margin-bottom: var(--spacing-1);
+}
+
+/* Estilos para a seção Nossa Trajetória e Conquistas */
+.historico {
+    padding: var(--spacing-5) 0; /* Espaçamento vertical */
+    text-align: center; /* Centraliza o texto e a imagem */
+}
+
+.historico figure {
+    /* Limita o container da imagem para centralizá-la e reduzir seu tamanho */
+    max-width: 600px; /* Você pode mudar esse valor (600px, 700px, etc.) */
+    margin: var(--spacing-4) auto; /* Centraliza o bloco da figura */
+}
+
+.historico figure img {
+    /* Garante que a imagem se ajuste ao limite de 600px da figure */
+    width: 100%;
+    height: auto;
+    border-radius: var(--spacing-1);
+}
+
+/* ======================================= */
+/* 7. ESTILOS DO FORMULÁRIO (cadastro.html) */
+/* ======================================= */
+
+.formulario-cadastro {
+    max-width: 800px;
+    margin: var(--spacing-5) auto;
+    padding: var(--spacing-4);
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.formulario-cadastro h2 {
+    border-bottom: 2px solid var(--color-neutral-light);
+    padding-bottom: var(--spacing-2);
+    margin-top: var(--spacing-4);
+    color: var(--color-primary-dark);
+}
+
+.formulario-cadastro fieldset {
+    border: 1px solid var(--color-neutral-light);
+    padding: var(--spacing-3);
+    margin-bottom: var(--spacing-4);
+    border-radius: 6px;
+    /* Usa CSS Grid para o layout de 2 colunas */
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: var(--spacing-3);
+}
+
+.formulario-cadastro legend {
+    font-weight: bold;
+    color: var(--color-primary-base);
+    padding: 0 var(--spacing-1);
+    font-size: var(--font-size-base);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--color-neutral-dark);
+}
+
+.input-group input {
+    padding: var(--spacing-2);
+    border: 1px solid var(--color-neutral-light);
+    border-radius: 4px;
+    font-size: var(--font-size-base);
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--color-primary-base);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-base-rgb), 0.2);
+}
+
+/* ======================================= */
+/* 8. ESTILOS DO RODAPÉ (FOOTER) */
+/* ======================================= */
+footer {
+    background-color: var(--color-neutral-dark);
+    color: var(--color-neutral-light);
+    padding: var(--spacing-3) 0;
+    text-align: center;
+    /* Adiciona a cor primária como uma linha de destaque no topo */
+    border-top: 5px solid var(--color-primary-base);
+}
+
+footer a {
+    color: var(--color-secondary-base);
+}
+
+footer a:hover {
+    color: var(--color-secondary-light);
+}
+
+/* Responsividade específica para o formulário (adicionada no responsive.css) */
+/* NOTA: Certifique-se de adicionar isso ao seu responsive.css para completar a estilização */
+@media (max-width: 600px) {
+    .formulario-cadastro fieldset {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+
+    .institucional-mvv article {
+        min-width: 100%;
+    }
+}
+
+/* CORREÇÃO PARA FORÇAR TÍTULOS LONGOS A NÃO QUEBRAR */
+main h2 {
+    /* Garante que o H2 dentro do MAIN ocupe a largura total de seu pai */
+    width: 100%;
+    /* Permite que o texto quebre normalmente, mas garante a largura do elemento */
+    white-space: normal; 
+}
+
+/* CORREÇÃO FORÇADA DE LAYOUT PARA TÍTULOS DE PÁGINA */
+/* Aplica-se a H2s que podem estar sendo espremidos por um Flexbox/Grid */
+main h2 {
+    /* Força o elemento H2 a ser um bloco de largura total */
+    display: block; 
+    width: 100%;
+    /* Garante que ele use a largura máxima do seu pai */
+    max-width: 100%;
+    /* Alinha o texto ao centro se for o caso do título */
+    text-align: center;
+}
+
+/* Se for o caso de o título estar dentro de um container específico */
+.container h2 {
+    text-align: center;
+}

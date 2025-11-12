@@ -1,0 +1,134 @@
+/* Importa as variáveis para garantir acesso aos espaçamentos, etc. */
+@import url('variables.css');
+
+/* ================================== */
+/* 1. BREAKPOINT: Desktop Pequeno (1024px) */
+/* ================================== */
+/* Ajusta o espaçamento geral para telas menores que um desktop grande */
+@media (max-width: 1024px) {
+    /* Diminui o padding principal */
+    main {
+        padding: var(--spacing-4) var(--spacing-2); /* 32px vertical */
+    }
+    
+    /* Diminui o gap na lista de projetos */
+    .project-list {
+        gap: var(--spacing-3); /* 24px */
+    }
+
+    /* Reduz o tamanho da fonte do H1 */
+    h1 {
+        font-size: var(--font-size-h2); /* 32px */
+    }
+}
+
+
+/* ================================== */
+/* 2. BREAKPOINT: Tablet Grande (768px) */
+/* ================================== */
+/* Layout 100% empilhado (os 8 e 4 colunas viram 12 colunas) */
+@media (max-width: 768px) {
+    /* --- Grid Layout --- */
+    /* Faz o Card de Projeto e a Categoria ocuparem a largura total */
+    .projeto-item, 
+    .categorias-projeto {
+        grid-column: 1 / span 12; /* Ocupa todas as 12 colunas */
+    }
+
+    /* Inverte a ordem para que o filtro fique no final (ou mantém no topo) */
+    .categorias-projeto {
+        order: 2; 
+    }
+
+    /* --- Navegação Mobile (Menu Hambúrguer) --- */
+    /* Esconde o menu de desktop e mostra um ícone (simulado aqui) */
+    .main-nav ul {
+        display: none; /* Esconde o menu de desktop */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 65px; /* Abaixo do header */
+        left: 0;
+        background-color: var(--color-white);
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.05);
+        padding: var(--spacing-2) 0;
+        z-index: 10;
+    }
+
+    .main-nav li {
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* (Em um projeto real, você precisaria de JavaScript para alternar a classe que mostra o menu mobile) */
+
+    /* Altera o layout de voluntariado para empilhar */
+    .oportunidade-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-2);
+    }
+}
+
+
+/* ================================== */
+/* 3. BREAKPOINT: Tablet Pequeno (600px) */
+/* ================================== */
+/* Ajustes finos de tipografia e espaçamento para tablet pequeno */
+@media (max-width: 600px) {
+    h1 {
+        font-size: var(--font-size-h2); /* Mantém 32px */
+    }
+    h2 {
+        font-size: var(--font-size-lg); /* Reduz para 20px */
+    }
+    .cta-button {
+        padding: var(--spacing-1) var(--spacing-2); /* 8px por 16px */
+        font-size: var(--font-size-base); /* 16px */
+    }
+}
+
+
+/* ================================== */
+/* 4. BREAKPOINT: Celular Grande (480px) */
+/* ================================== */
+/* Reduz o padding geral do container */
+@media (max-width: 480px) {
+    main {
+        padding: var(--spacing-3) var(--spacing-1); /* 24px vertical, 8px horizontal */
+    }
+    
+    /* Garante que o texto principal fique legível */
+    body {
+        font-size: var(--font-size-sm); /* 14px */
+    }
+}
+
+
+/* ================================== */
+/* 5. BREAKPOINT: Celular Pequeno (320px) */
+/* ================================== */
+/* Ajustes para telas muito pequenas */
+@media (max-width: 320px) {
+    /* Diminui o logo */
+    .main-nav img {
+        height: 30px;
+    }
+    /* Diminui ainda mais o título */
+    h1 {
+        font-size: var(--font-size-lg); /* 20px */
+    }
+}
+
+/* CORREÇÃO PARA TÍTULOS GRANDES NÃO QUEBRAREM EM MÚLTIPLAS LINHAS DESNECESSÁRIAS */
+@media (max-width: 768px) {
+    /* Força o H2 a ocupar a largura total do seu pai, corrigindo o problema da coluna espremida */
+    main h2 {
+        display: block; 
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        /* Reduz ligeiramente o tamanho da fonte apenas no mobile/tablet se ainda estiver quebrando */
+        font-size: 2rem; 
+    }
+}

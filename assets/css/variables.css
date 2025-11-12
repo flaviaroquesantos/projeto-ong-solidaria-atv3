@@ -1,0 +1,47 @@
+/* ==================================== */
+/* 1. VARIÁVEIS DE DESIGN SYSTEM: CORES */
+/* ==================================== */
+:root {
+    /* Paleta de Cores (Mínimo 8 cores exigidas) */
+
+    /* Primárias (usadas para botões, links, e elementos principais) */
+    --color-primary-dark: #007bff; /* Azul Escuro */
+    --color-primary-base: #0099ff; /* Azul Base (Ação principal) */
+    --color-primary-light: #52b6ff; /* Azul Claro (Hover/Focus) */
+
+    /* Secundárias (para destaque e elementos secundários) */
+    --color-secondary-dark: #28a745; /* Verde Escuro */
+    --color-secondary-base: #37c756; /* Verde Base (Sucesso/Ênfase) */
+
+    /* Neutras (para texto, fundo e bordas) */
+    --color-neutral-dark: #333333; /* Texto Principal */
+    --color-neutral-medium: #6c757d; /* Texto Secundário */
+    --color-neutral-light: #f8f9fa; /* Fundo Leve */
+    --color-white: #ffffff; /* Fundo/Cartões */
+    --color-error: #dc3545; /* Erro/Atenção */
+
+    /* =========================================== */
+    /* 2. VARIÁVEIS DE DESIGN SYSTEM: ESPAÇAMENTO */
+    /* =========================================== */
+    /* Sistema Modular de Espaçamento (8px, 16px, 24px, 32px, 48px, 64px) */
+    --spacing-1: 0.5rem;   /* 8px */
+    --spacing-2: 1rem;     /* 16px */
+    --spacing-3: 1.5rem;   /* 24px */
+    --spacing-4: 2rem;     /* 32px */
+    --spacing-5: 3rem;     /* 48px */
+    --spacing-6: 4rem;     /* 64px */
+
+    /* ======================================= */
+    /* 3. VARIÁVEIS DE DESIGN SYSTEM: TIPOGRAFIA */
+    /* ======================================= */
+    /* Tipografia Hierárquica (Mínimo 5 tamanhos de fonte exigidos) */
+    --font-size-base: 1rem;       /* 16px - Texto do corpo */
+    --font-size-sm: 0.875rem;     /* 14px - Texto pequeno/Legendas */
+    --font-size-lg: 1.25rem;      /* 20px - Subtítulos */
+    --font-size-h2: 2rem;         /* 32px - Títulos de Seção (H2) */
+    --font-size-h1: 3rem;         /* 48px - Título da Página (H1) */
+
+    /* Famílias de Fonte */
+    --font-family-sans: 'Arial', sans-serif;
+    --font-family-serif: 'Georgia', serif;
+}
