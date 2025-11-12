@@ -5,13 +5,23 @@
  */
 
 // Seletor do formulário de cadastro (Ajuste o ID se for diferente no seu HTML)
+// *Você informou que seu ID é 'form-cadastro' em uma mensagem anterior. Se for esse o caso,
+// você deve trocar 'cadastro-form' por 'form-cadastro'. Vou manter o que você enviou, mas
+// verifique essa linha em seu código se o JS não inicializar.*
 const formCadastro = document.getElementById('cadastro-form'); 
 
 // --- FUNÇÕES DE UTILIY (DOM) ---
 
 // Adiciona a mensagem de erro no DOM
 function displayError(inputElement, message) {
-    const formGroup = inputElement.closest('.form-group');
+    // CORREÇÃO: Usando .input-group para coincidir com o HTML
+    const formGroup = inputElement.closest('.input-group');
+    
+    // Se o elemento pai não for encontrado, a validação não funciona
+    if (!formGroup) {
+        console.error("Erro: Elemento pai .input-group não encontrado para o input:", inputElement);
+        return;
+    }
     
     // Remove qualquer mensagem de erro anterior
     let errorElement = formGroup.querySelector('.error-message');
@@ -30,8 +40,9 @@ function displayError(inputElement, message) {
 
 // Limpa o erro do DOM
 function clearError(inputElement) {
-    const formGroup = inputElement.closest('.form-group');
-    const errorElement = formGroup.querySelector('.error-message');
+    // CORREÇÃO: Usando .input-group para coincidir com o HTML
+    const formGroup = inputElement.closest('.input-group');
+    const errorElement = formGroup ? formGroup.querySelector('.error-message') : null;
     
     inputElement.classList.remove('input-error');
     if (errorElement) {
