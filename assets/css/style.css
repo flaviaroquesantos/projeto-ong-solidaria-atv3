@@ -442,3 +442,28 @@ main h2 {
 .container h2 {
     text-align: center;
 }
+
+/* ===================================== */
+/* ESTILOS PARA VALIDAÇÃO JS (ATIVIDADE 3) */
+/* ===================================== */
+
+/* Estilo para a mensagem de erro que o JavaScript injeta */
+.error-message {
+    color: var(--color-error); /* Define a cor de erro (vermelho) */
+    font-size: var(--font-size-sm); /* Tamanho de fonte menor */
+    margin-top: 5px;
+    display: block; /* Garante que a mensagem ocupe sua própria linha */
+}
+
+/* Estilo para o campo de input quando a validação falha */
+.input-error {
+    border: 2px solid var(--color-error) !important; /* Borda vermelha mais grossa */
+    box-shadow: 0 0 5px rgba(var(--color-error-rgb), 0.5); /* Sombra suave vermelha */
+}
+
+/* Define a variável de cor de erro (se ainda não existir no variables.css) */
+/* Se você já tem um vermelho definido, use-o */
+/* Exemplo de variável (Adicione ao variables.css se não existir): 
+--color-error: #cc0000;
+--color-error-rgb: 204, 0, 0; 
+*/
