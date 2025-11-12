@@ -44,4 +44,8 @@
     /* Famílias de Fonte */
     --font-family-sans: 'Arial', sans-serif;
     --font-family-serif: 'Georgia', serif;
+
+    /* ... outras variáveis ... */
+    --color-error: #cc0000;
+    --color-error-rgb: 204, 0, 0;
 }
