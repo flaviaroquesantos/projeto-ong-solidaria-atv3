@@ -7,9 +7,7 @@
     <meta name="description" content="Conheça a missão, visão e valores da [Impacta+]. Saiba como apoiamos nossa comunidade e veja nossas conquistas.">
     
     <link rel="stylesheet" href="assets/css/variables.css"> 
-    
     <link rel="stylesheet" href="assets/css/style.css"> 
-    
     <link rel="stylesheet" href="assets/css/responsive.css"> 
 </head>
 <body>
@@ -17,28 +15,28 @@
         <nav class="main-nav">
             <img src="assets/img/logo.png" alt="Logo da ONG - Voltar para o início">
             <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="projetos.html">Projetos & Apoie</a></li>
-                <li><a href="cadastro.html">Seja Voluntário</a></li>
+                <!-- links ajustados para SPA -->
+                <li><a href="#" data-page="index">Início</a></li>
+                <li><a href="#" data-page="projetos">Projetos & Apoie</a></li>
+                <li><a href="#" data-page="cadastro">Seja Voluntário</a></li>
                 <li><a href="#" accesskey="t">Transparência</a></li> 
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main id="spa-content">
         <section class="hero-section">
-    <h1>Transformando Vidas Através da Ação Solidária</h1>
-    <p>Há mais de 10 anos, dedicamos nossos esforços para construir um futuro mais justo e inclusivo em nossa comunidade.</p>
-    
-    <img src="assets/img/hero_voluntarios.jpg" alt="Foto de voluntários trabalhando em comunidade" class="hero-image">
-    
-    <a href="projetos.html" class="cta-button">Conheça Nossos Projetos</a>
-</section>
+            <h1>Transformando Vidas Através da Ação Solidária</h1>
+            <p>Há mais de 10 anos, dedicamos nossos esforços para construir um futuro mais justo e inclusivo em nossa comunidade.</p>
+            
+            <img src="assets/img/hero_voluntarios.jpg" alt="Foto de voluntários trabalhando em comunidade" class="hero-image">
+            
+            <a href="#" data-page="projetos" class="cta-button">Conheça Nossos Projetos</a>
+        </section>
 
         <div class="container"> 
             
             <section class="institucional-mvv">
-                
                 <article class="missao">
                     <h3>Missão</h3>
                     <p>Promover o desenvolvimento humano integral e a inclusão social de famílias em situação de vulnerabilidade, através de educação e apoio socioemocional.</p>
@@ -58,7 +56,6 @@
                         <li>Inovação Social</li>
                     </ul>
                 </article>
-                
             </section>
             
             <section class="historico">
@@ -70,19 +67,20 @@
                     <figcaption>Gráfico de Pessoas Impactadas por Ano.</figcaption>
                 </figure>
                 
-                <p>Até hoje, já impactamos diretamente mais de **5.000 pessoas** e realizamos 30 projetos completos.</p>
+                <p>Até hoje, já impactamos diretamente mais de <strong>5.000 pessoas</strong> e realizamos 30 projetos completos.</p>
             </section>
             
             <section class="contato">
                 <h2>Fale Conosco</h2>
                 <address>
-                    <p>📍 **Endereço:** Rua da Solidariedade, 100 - Bairro Feliz, Manaus/AM</p>
-                    <p>📞 **Telefone:** <a href="tel:+5599999999999">(99) 99999-9999</a></p>
-                    <p>✉️ **E-mail:** <a href="mailto:impacta+@ong.org">impacta+@ong.org</a></p>
+                    <p>📍 <strong>Endereço:</strong> Rua da Solidariedade, 100 - Bairro Feliz, Manaus/AM</p>
+                    <p>📞 <strong>Telefone:</strong> <a href="tel:+5599999999999">(99) 99999-9999</a></p>
+                    <p>✉️ <strong>E-mail:</strong> <a href="mailto:impacta+@ong.org">impacta+@ong.org</a></p>
                 </address>
             </section>
 
-        </div> </main>
+        </div>
+    </main>
 
     <footer>
         <div class="footer-content"> 
@@ -92,5 +90,8 @@
             </div>
         </div>
     </footer>
+
+    <!-- script principal do SPA -->
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>
