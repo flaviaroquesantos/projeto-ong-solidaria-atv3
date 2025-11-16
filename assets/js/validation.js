@@ -4,6 +4,7 @@
 const dadosCadastrados = []; 
 
 function renderizarVoluntarios() {
+    // Procura o local onde a lista será exibida (no seu cadastro.html)
     const listaVoluntariosDiv = document.getElementById("lista-voluntarios");
     if (!listaVoluntariosDiv) return;
 
@@ -14,9 +15,8 @@ function renderizarVoluntarios() {
 
     const ul = document.createElement('ul');
     dadosCadastrados.forEach(voluntario => {
-        // Exibindo apenas nome e e-mail para simplificar
         const li = document.createElement('li');
-        li.textContent = `${voluntario.nome} (${voluntario.email})`;
+        li.textContent = `${voluntario.nome} (${voluntario.email}) - Tel: ${voluntario.telefone}`;
         ul.appendChild(li);
     });
     
@@ -33,13 +33,13 @@ function handleValidation(event) {
     
     const form = document.getElementById("form-cadastro");
     if (!form) {
-        console.error("Validação: Formulário 'form-cadastro' não encontrado na DOM.");
+        // Se o formulário não for encontrado, não faça nada (ele já foi inicializado)
         return;
     }
 
     let formularioValido = true;
 
-    // 1. Limpeza: Remove mensagens de erro antigas e classes de erro
+    // 1. Limpeza: Remove mensagens de erro e classes de erro
     form.querySelectorAll(".error-message").forEach(msg => msg.remove());
     form.querySelectorAll("input.input-error").forEach(input => input.classList.remove("input-error"));
 
@@ -52,11 +52,12 @@ function handleValidation(event) {
         // Validação de campo vazio
         if (!campo.value.trim()) {
             formularioValido = false;
-            campo.classList.add("input-error"); // Adiciona a classe de erro (cor vermelha)
+            campo.classList.add("input-error"); 
 
             const erro = document.createElement("span");
             erro.classList.add("error-message");
             
+            // Pega o nome do campo para a mensagem
             const labelText = campo.previousElementSibling ? campo.previousElementSibling.textContent.replace(':', '') : 'Campo';
             erro.textContent = `O campo "${labelText.trim()}" é obrigatório.`;
 
@@ -75,8 +76,8 @@ function handleValidation(event) {
             campo.parentNode.insertBefore(erro, campo.nextSibling);
         }
         
-        // Se o campo for válido, salva os dados temporariamente
-        if (formularioValido && campo.name) {
+        // Se o campo for válido, salva os dados
+        if (campo.name) {
             novosDados[campo.name] = campo.value.trim();
         }
     });
@@ -103,7 +104,6 @@ function handleValidation(event) {
 function initValidation() {
     const form = document.getElementById("form-cadastro");
     if (!form) {
-        console.warn("InitValidation: Formulário não encontrado. Tentando renderizar lista de voluntários.");
         renderizarVoluntarios();
         return;
     }

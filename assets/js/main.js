@@ -22,7 +22,7 @@ async function carregarPagina(pagina) {
         const response = await fetch(arquivo);
 
         if (!response.ok) {
-             throw new Error(`Página "${arquivo}" não encontrada. Status: ${response.status}`);
+            throw new Error(`Página "${arquivo}" não encontrada. Status: ${response.status}`);
         }
 
         const html = await response.text();
@@ -30,7 +30,6 @@ async function carregarPagina(pagina) {
         temp.innerHTML = html;
 
         // Pega APENAS o conteúdo do MAIN
-        // CRÍTICO: O arquivo HTML retornado deve ter a tag <main> com o conteúdo da página.
         const novoConteudo = temp.querySelector("main");
 
         if (!novoConteudo) {
@@ -45,34 +44,27 @@ async function carregarPagina(pagina) {
         const tituloFormatado = pagina.charAt(0).toUpperCase() + pagina.slice(1);
         document.title = `Impacta+ | ${tituloFormatado}`;
 
-        // -------------------------------
-        // 3. 🔥 ATIVAR VALIDAÇÃO DO CADASTRO
-        // -------------------------------
+        // -----------------------------------------------------------------
+        // 3. 🔥 ATIVAR LÓGICAS ESPECÍFICAS DE PÁGINA (Validação e Renderização)
+        // CRÍTICO: Usamos o caminho absoluto com o nome da pasta do GitHub Pages.
+        // -----------------------------------------------------------------
+        
+        const pathBase = "/projeto-ong-solidaria-atv3/assets/js/";
+
         if (pagina === "cadastro") {
             try {
-                // Importação dinâmica do módulo de validação
-                if (pagina === "cadastro") {
-            try {
-                // Tenta importar usando o caminho do repositório (CRÍTICO para GitHub Pages)
-                const module = await import("/projeto-ong-solidaria-atv3/assets/js/validation.js");
+                // Importa e executa a validação
+                const module = await import(pathBase + "validation.js");
                 module.initValidation(); 
             } catch (e) {
-                console.error("ERRO CRÍTICO: Falha ao carregar ou executar validation.js.", e);
-            }
-        }
-                module.initValidation(); // Chama a função corrigida
-            } catch (e) {
-                console.error("ERRO CRÍTICO: Falha ao carregar ou executar validation.js.", e);
+                console.error("ERRO CRÍTICO: Falha ao carregar ou executar validation.js. Verifique o caminho:", e);
             }
         }
         
-        // -------------------------------
-        // 4. 🔥 ATIVAR RENDERIZAÇÃO DE PROJETOS (se necessário)
-        // -------------------------------
         if (pagina === "projetos") {
             try {
-                const module = await import("./assets/js/templates.js");
-                // Verifica se a função existe no módulo importado
+                // Importa e executa a renderização de projetos
+                const module = await import(pathBase + "templates.js");
                 if (module.renderDynamicProjects) {
                     module.renderDynamicProjects(); 
                 }
@@ -92,16 +84,14 @@ async function carregarPagina(pagina) {
 // LÓGICA DE ATIVAÇÃO DO SPA
 // ----------------------------------------------------
 
-// 1. Ouve mudanças no hash (cliques nos links de navegação: #/projetos, #/cadastro)
+// 1. Ouve mudanças no hash
 window.addEventListener("hashchange", () => {
-    // Remove o '#' e a barra inicial (/)
     const page = location.hash.replace(/^#\/?/, "") || "index";
     carregarPagina(page);
 });
 
-// 2. Carrega a página inicial ou a rota da URL quando o DOM está pronto
+// 2. Carrega a página inicial
 window.addEventListener("DOMContentLoaded", () => {
-    // Pega o hash e remove o '#' e o '/' inicial
     const paginaInicial = location.hash.replace(/^#\/?/, "") || "index";
     carregarPagina(paginaInicial);
 });
