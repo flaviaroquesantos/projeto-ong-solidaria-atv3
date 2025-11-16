@@ -1,109 +1,70 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro | [Impacta+]</title>
-    
-    <link rel="stylesheet" href="assets/css/variables.css"> 
-    
-    <link rel="stylesheet" href="assets/css/style.css"> 
-    
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    
-    <meta name="description" content="Cadastre-se para ser um voluntário ou doador da [Impacta+] e ajude a transformar vidas.">
-</head>
-<body>
-    <header>
-        <nav>
-            <h1>[Impacta+]</h1>
-            <ul>
-                <li><a href="#" data-page="index">Início</a></li>
-                <li><a href="#" data-page="Projetos">Projetos</a></li>
-                <li><a href="#" data-page="Cadastro">Cadastro</a></li>
-            </ul>
-        </nav>
-    </header>
+<section class="hero">
+    <h1>Junte-se a Nós! Cadastro de Voluntários e Doadores</h1>
+</section>
 
-    <main>
-        <section class="hero">
-            <h1>Junte-se a Nós! Cadastro de Voluntários e Doadores</h1>
-        </section>
+<section class="formulario-cadastro">
+    <form id="form-cadastro" action="#" method="POST" novalidate>
+        
+        <h2>1. Dados Pessoais</h2>
+        <fieldset>
+            <legend>Informações de Identificação</legend>
+            <div class="input-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required> 
+            </div>
 
-        <section class="formulario-cadastro">
-            <form id="form-cadastro" action="#" method="POST" novalidate>
-                
-                <h2>1. Dados Pessoais</h2>
-                <fieldset>
-                    <legend>Informações de Identificação</legend>
-                    <div class="input-group">
-                        <label for="nome">Nome Completo:</label>
-                        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required> 
-                    </div>
+            <div class="input-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+            </div>
 
-                    <div class="input-group">
-                        <label for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
-                    </div>
+            <div class="input-group">
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(99) 99999-9999" required>
+            </div>
 
-                    <div class="input-group">
-                        <label for="cpf">CPF:</label>
-                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="telefone">Telefone:</label>
-                        <input type="tel" id="telefone" name="telefone" placeholder="(99) 99999-9999" pattern="\(\d{2}\) \d{5}-\d{4}" title="Formato: (99) 99999-9999" required>
-                    </div>
+            <div class="input-group">
+                <label for="nascimento">Data de Nascimento:</label>
+                <input type="date" id="nascimento" name="nascimento" required>
+            </div>
+        </fieldset>
 
-                    <div class="input-group">
-                        <label for="nascimento">Data de Nascimento:</label>
-                        <input type="date" id="nascimento" name="nascimento" required>
-                    </div>
-                </fieldset>
+        <h2>2. Endereço</h2>
+        <fieldset>
+            <legend>Localização</legend>
+            <div class="input-group">
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" placeholder="00000-000" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" placeholder="Rua, número e complemento" required>
+            </div>
 
-                <h2>2. Endereço</h2>
-                <fieldset>
-                    <legend>Localização</legend>
-                    <div class="input-group">
-                        <label for="cep">CEP:</label>
-                        <input type="text" id="cep" name="cep" placeholder="00000-000" pattern="\d{5}-\d{3}" title="Formato: 00000-000" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="endereco">Endereço:</label>
-                        <input type="text" id="endereco" name="endereco" placeholder="Rua, número e complemento" required>
-                    </div>
+            <div class="input-group">
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required>
+            </div>
 
-                    <div class="input-group">
-                        <label for="cidade">Cidade:</label>
-                        <input type="text" id="cidade" name="cidade" required>
-                    </div>
+            <div class="input-group">
+                <label for="estado">Estado:</label>
+                <input type="text" id="estado" name="estado" required>
+            </div>
+        </fieldset>
+        
+        <button type="submit" class="cta-button">Finalizar Cadastro</button>
+    </form>
+</section>
 
-                    <div class="input-group">
-                        <label for="estado">Estado:</label>
-                        <input type="text" id="estado" name="estado" required>
-                    </div>
-                </fieldset>
-                
-                <button type="submit" class="cta-button">Finalizar Cadastro</button>
-            </form>
-        </section> class="voluntarios-cadastrados">
+<section class="voluntarios-cadastrados">
     <h2>Voluntários Cadastrados</h2>
     <div id="lista-voluntarios">
         <p>Nenhum voluntário cadastrado ainda.</p>
     </div>
 </section>
-    </main>
-
-    <footer>
-        <address>
-            <p>Contato: (92) 99999-9999 | Email: impacta+@ong.org</p>
-            <p>&copy; 2025 [Impacta+]. Todos os direitos reservados.</p>
-        </address>
-    </footer>
-
-    <script src="assets/js/main.js" defer></script>
-    <script src="assets/js/validation.js" defer></script>
-</body>
-</html>
