@@ -278,7 +278,7 @@ main {
 
 .formulario-cadastro {
     max-width: 800px;
-    margin: var(--spacing-5) auto;
+    margin: var(--spacing-5) auto; /* CENTRALIZAÇÃO GARANTIDA */
     padding: var(--spacing-4);
     background-color: var(--color-white);
     border-radius: 8px;
@@ -299,8 +299,8 @@ main {
     border-radius: 6px;
     /* Usa CSS Grid para o layout de 2 colunas */
     display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: var(--spacing-3);
+    grid-template-columns: 1fr 1fr; /* 2 COLUNAS DE TAMANHOS IGUAIS */
+    gap: var(--spacing-3); /* ESPAÇAMENTO ENTRE CAMPOS */
 }
 
 .formulario-cadastro legend {
@@ -310,9 +310,15 @@ main {
     font-size: var(--font-size-base);
 }
 
+/* O input-group controla o campo e a label */
 .input-group {
     display: flex;
     flex-direction: column;
+}
+
+/* Regras para fazer campos como Endereço/CEP ocuparem 100% (2 COLUNAS) */
+.input-group.span-2 {
+    grid-column: span 2;
 }
 
 .input-group label {
@@ -320,21 +326,7 @@ main {
     margin-bottom: 5px;
     color: var(--color-neutral-dark);
 }
-
-.input-group input {
-    padding: var(--spacing-2);
-    border: 1px solid var(--color-neutral-light);
-    border-radius: 4px;
-    font-size: var(--font-size-base);
-    transition: border-color 0.3s;
-}
-
-.input-group input:focus {
-    border-color: var(--color-primary-base);
-    outline: none;
-    /* Assume que você tem a variável --color-primary-base-rgb definida no variables.css */
-    box-shadow: 0 0 0 3px rgba(var(--color-primary-base-rgb), 0.2);
-}
+/* ... restante dos estilos de input ... */
 
 /* ======================================= */
 /* 7.1. ESTILOS DE ERRO E VALIDAÇÃO (Ultra-Específico) */
