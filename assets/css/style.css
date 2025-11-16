@@ -337,19 +337,18 @@ main {
 }
 
 /* ======================================= */
-/* 7.1. ESTILOS DE ERRO E VALIDAÇÃO (CRÍTICO) */
+/* 7.1. ESTILOS DE ERRO E VALIDAÇÃO (Ultra-Específico) */
 /* ======================================= */
 
-/* Aplica a borda e fundo vermelho no input */
-/* Aumenta a especificidade para garantir que a borda apareça */
-.formulario-cadastro .input-group input.input-error { 
+/* Alvo CRÍTICO: INPUT dentro do div e do form */
+.formulario-cadastro .input-group > input.input-error[required] { 
     border: 2px solid #e63946 !important; 
-    background-color: #ffe5e5 !important; /* Adicionado !important aqui também */
+    background-color: #ffe5e5 !important;
 }
 
-/* Estiliza a mensagem de erro */
+/* Alvo CRÍTICO: MENSAGEM DE ERRO (span) */
 .formulario-cadastro .input-group .error-message {
-    display: block;
+    display: block !important; /* Garante que a mensagem apareça */
     margin-top: 6px;
     font-size: 0.9rem;
     color: #b00020;
