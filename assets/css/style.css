@@ -424,25 +424,20 @@ main h2 {
     text-align: center;
 }
 
-/* ===================================== */
-/* ESTILOS PARA VALIDAÇÃO JS (ATIVIDADE 3) */
-/* ===================================== */
+/* ======== ESTILOS DE VALIDAÇÃO DO FORMULÁRIO ======== */
 
-/* CORRIGIDO: O .input-group é o container pai. Trocamos .form-group por .input-group. */
-.input-group .error-message {
-    /* Usando variáveis para cor, com fallback direto para #cc0000 */
-    color: var(--color-error, #cc0000) !important; 
-    font-size: var(--font-size-sm);
-    margin-top: 5px;
-    display: block;
-    font-weight: bold; 
+.input-error {
+    border: 2px solid #e63946 !important;
+    background-color: #ffe5e5;
 }
 
-/* CORRIGIDO: Trocamos .form-group por .input-group. */
-.input-group input.input-error,
-.input-group textarea.input-error {
-    /* Usando variáveis para cor, com fallback direto para #cc0000 */
-    border: 2px solid var(--color-error, #cc0000) !important; 
-    /* Usando a cor RGB para a sombra (se existir no variables.css) */
-    box-shadow: 0 0 5px rgba(var(--color-error-rgb, 204, 0, 0), 0.5); 
+.error-message {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.9rem;
+    color: #b00020;
+    background: #ffe5e5;
+    padding: 6px 10px;
+    border-left: 4px solid #b00020;
+    border-radius: 4px;
 }
