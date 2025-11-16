@@ -1,25 +1,23 @@
+// assets/js/main.js
+
+/**
+ * MÓDULO PRINCIPAL DO SPA: Roteador baseado em Hash (método avançado com fetch)
+ */
+
+// Usamos window.onload (ou DOMContentLoaded) para garantir que o container existe
 document.addEventListener("DOMContentLoaded", () => {
-
+    
     const mainContainer = document.getElementById("spa-content");
-    const navLinks = document.querySelectorAll('a[data-page]');
 
-    // Clique no menu → troca a página
-    navLinks.forEach(link => {
-        link.addEventListener("click", (event) => {
-            event.preventDefault();
-            const page = link.getAttribute("data-page");
-
-            if (!page) return;
-            carregarPagina(page);
-
-            // Atualiza histórico
-            history.pushState({ page }, "", `#${page}`);
-        });
-    });
-
-    // Botão VOLTAR/AVANÇAR do navegador
-    window.addEventListener("popstate", (event) => {
-        const page = event.state?.page || "index";
+    // ----------------------------------------------------
+    // REMOÇÃO DA LÓGICA navLinks/data-page
+    // O sistema agora depende apenas do evento hashchange e do hash inicial.
+    // ----------------------------------------------------
+    
+    // Botão VOLTAR/AVANÇAR do navegador e links SPA (ouvindo o hash)
+    // Usamos o 'hashchange' para pegar a mudança de rota (ex: de #/index para #/cadastro)
+    window.addEventListener("hashchange", () => {
+        const page = location.hash.replace("#/", "") || "index";
         carregarPagina(page);
     });
 
@@ -27,53 +25,39 @@ document.addEventListener("DOMContentLoaded", () => {
      * FUNÇÃO PRINCIPAL DO SPA
      */
     async function carregarPagina(pagina) {
-        try {
-            // Define nome do arquivo
-            const arquivo = pagina === "index"
-                ? "index.html"
-                : `${pagina}.html`;
+        
+        // Mapeia a rota para o nome do arquivo. Rotas vazias ou '/' viram 'index.html'.
+        const arquivo = pagina === "" || pagina === "index"
+            ? "index.html"
+            : `${pagina}.html`;
 
+        try {
             const response = await fetch(arquivo);
 
-            if (!response.ok) throw new Error(`Página "${arquivo}" não encontrada.`);
+            if (!response.ok) throw new Error(`Página "${arquivo}" não encontrada. Status: ${response.status}`);
 
             const html = await response.text();
             const temp = document.createElement("div");
+            
+            // CRÍTICO: Se você está usando o fetch, o HTML retornado PRECISA 
+            // ter a tag <main> com o conteúdo da página, como se fosse um arquivo HTML completo.
             temp.innerHTML = html;
 
             // Pega APENAS o conteúdo do MAIN
             const novoConteudo = temp.querySelector("main");
 
             if (!novoConteudo) {
-                mainContainer.innerHTML = "<p>Erro: arquivo HTML sem <main>.</p>";
+                // Se o arquivo HTML não contiver a tag <main>, o roteador falha.
+                mainContainer.innerHTML = "<p>Erro: Arquivo HTML retornado não contém o conteúdo dentro de uma tag &lt;main&gt;.</p>";
                 return;
             }
 
             // Substitui o conteúdo atual pelo novo
+            // Importante: Manter o <div class="container"> ao redor do mainContainer no index.html.
             mainContainer.innerHTML = novoConteudo.innerHTML;
 
             // Atualiza o título da aba
             document.title = `Impacta+ | ${pagina.charAt(0).toUpperCase() + pagina.slice(1)}`;
-
-            // Reexecuta scripts que vieram dentro do HTML carregado
-            temp.querySelectorAll("script").forEach(old => {
-                const newScript = document.createElement("script");
-                if (old.src) newScript.src = old.src;
-                else newScript.textContent = old.textContent;
-                document.body.appendChild(newScript);
-            });
-
-            // -------------------------------
-            // 🔥 CARREGAR TEMPLATES DINÂMICOS
-            // -------------------------------
-            if (pagina === "projetos" || pagina === "projetos") {
-                try {
-                    const module = await import("./assets/js/templates.js");
-                    module.renderDynamicProjects();
-                } catch (e) {
-                    console.warn("templates.js não encontrado.");
-                }
-            }
 
             // -------------------------------
             // 🔥 ATIVAR VALIDAÇÃO DO CADASTRO
@@ -81,20 +65,30 @@ document.addEventListener("DOMContentLoaded", () => {
             if (pagina === "cadastro") {
                 try {
                     const module = await import("./assets/js/validation.js");
-                    module.initValidation();
+                    
+                    // CORREÇÃO: O nome da função de inicialização DEVE ser o exportado no validation.js
+                    // Já que no código você usou module.initValidation(), mantive este nome.
+                    module.initValidation(); 
+                    
                 } catch (e) {
-                    console.warn("validation.js não encontrado ou inicialização falhou.", e);
+                    console.error("ERRO CRÍTICO: Falha ao carregar ou executar validation.js.", e);
+                    // Avisar o usuário se o script de validação falhar
+                    mainContainer.insertAdjacentHTML('afterbegin', '<div style="color: red; text-align: center;">Erro: O sistema de validação falhou ao carregar.</div>');
                 }
             }
 
+            // O código de reexecução de scripts foi removido para evitar problemas de duplicação
+            // A importação dinâmica acima já garante que o validation.js seja executado no momento certo.
+
         } catch (error) {
             console.error(error);
-            mainContainer.innerHTML = `<p style="color:red;">Erro ao carregar a página ${pagina}</p>`;
+            mainContainer.innerHTML = `<p style="color:red;">Erro ao carregar a página: ${error.message}</p>`;
         }
     }
 
-    // Carrega página inicial automaticamente
-    const paginaInicial = location.hash.replace("#", "") || "index";
+    // Carrega página inicial automaticamente, verificando a URL atual
+    // Pega o hash e remove o '#' e o '/' inicial
+    const paginaInicial = location.hash.replace(/^#\/?/, "") || "index";
     carregarPagina(paginaInicial);
 
 });
