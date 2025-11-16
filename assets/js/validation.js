@@ -1,78 +1,7 @@
 // assets/js/validation.js
 
-// Este Array simula um banco de dados temporário para salvar dados.
+// Array para armazenar dados dos voluntários (simulando um "banco de dados" local)
 const dadosCadastrados = []; 
-
-function handleValidation(event) {
-    // 1. CRÍTICO: IMPEDE O ENVIO PADRÃO DO FORMULÁRIO (resolve o erro 405)
-    event.preventDefault(); 
-    
-    // Procura o formulário dentro do escopo da função
-    const form = document.getElementById("form-cadastro");
-    if (!form) {
-        console.error("Validação: Formulário 'form-cadastro' não encontrado na DOM.");
-        return;
-    }
-
-    let formularioValido = true;
-
-    // 2. Limpeza: Remove mensagens de erro antigas e classes de erro
-    form.querySelectorAll(".error-message").forEach(msg => msg.remove());
-    form.querySelectorAll("input.input-error").forEach(input => input.classList.remove("input-error"));
-
-    // 3. Validação de campos obrigatórios
-    const camposObrigatorios = form.querySelectorAll("input[required]");
-    const novosDados = {};
-
-    camposObrigatorios.forEach((campo) => {
-        
-        // 3.1. Validação de campo vazio
-        if (!campo.value.trim()) {
-            formularioValido = false;
-            campo.classList.add("input-error"); 
-
-            const erro = document.createElement("span");
-            erro.classList.add("error-message");
-            
-            const labelText = campo.previousElementSibling ? campo.previousElementSibling.textContent.replace(':', '') : 'Campo';
-            erro.textContent = `O campo "${labelText.trim()}" é obrigatório.`;
-
-            // Insere a mensagem de erro APÓS o campo
-            campo.parentNode.insertBefore(erro, campo.nextSibling);
-        }
-        // 3.2. Validação de E-mail
-        else if (campo.type === 'email' && !/\S+@\S+\.\S+/.test(campo.value)) {
-            formularioValido = false;
-            campo.classList.add("input-error");
-            
-            const erro = document.createElement("span");
-            erro.classList.add("error-message");
-            erro.textContent = `Por favor, insira um e-mail válido.`;
-            
-            campo.parentNode.insertBefore(erro, campo.nextSibling);
-        }
-        
-        // 4. Se o campo for válido, salva os dados
-        if (campo.name) {
-            novosDados[campo.name] = campo.value.trim();
-        }
-    });
-
-    // 5. Ação final
-    if (formularioValido) {
-        // Salva os dados e exibe a lista atualizada
-        dadosCadastrados.push(novosDados);
-        renderizarVoluntarios();
-
-        alert("✅ Cadastro realizado com sucesso!");
-        form.reset();
-    } else {
-        const primeiroErro = form.querySelector(".input-error");
-        if (primeiroErro) {
-            primeiroErro.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-    }
-}
 
 function renderizarVoluntarios() {
     const listaVoluntariosDiv = document.getElementById("lista-voluntarios");
@@ -85,13 +14,88 @@ function renderizarVoluntarios() {
 
     const ul = document.createElement('ul');
     dadosCadastrados.forEach(voluntario => {
+        // Exibindo apenas nome e e-mail para simplificar
         const li = document.createElement('li');
-        li.textContent = `${voluntario.nome} (${voluntario.email}) - Tel: ${voluntario.telefone}`;
+        li.textContent = `${voluntario.nome} (${voluntario.email})`;
         ul.appendChild(li);
     });
     
-    listaVoluntariosDiv.innerHTML = '<h3>Lista Atualizada:</h3>';
+    listaVoluntariosDiv.innerHTML = '<h3>Voluntários Cadastrados:</h3>';
     listaVoluntariosDiv.appendChild(ul);
+}
+
+
+function handleValidation(event) {
+    // CRÍTICO: IMPEDE O ENVIO PADRÃO DO FORMULÁRIO
+    if (event) {
+        event.preventDefault(); 
+    }
+    
+    const form = document.getElementById("form-cadastro");
+    if (!form) {
+        console.error("Validação: Formulário 'form-cadastro' não encontrado na DOM.");
+        return;
+    }
+
+    let formularioValido = true;
+
+    // 1. Limpeza: Remove mensagens de erro antigas e classes de erro
+    form.querySelectorAll(".error-message").forEach(msg => msg.remove());
+    form.querySelectorAll("input.input-error").forEach(input => input.classList.remove("input-error"));
+
+    // 2. Validação de campos obrigatórios
+    const camposObrigatorios = form.querySelectorAll("input[required]");
+    const novosDados = {};
+
+    camposObrigatorios.forEach((campo) => {
+        
+        // Validação de campo vazio
+        if (!campo.value.trim()) {
+            formularioValido = false;
+            campo.classList.add("input-error"); // Adiciona a classe de erro (cor vermelha)
+
+            const erro = document.createElement("span");
+            erro.classList.add("error-message");
+            
+            const labelText = campo.previousElementSibling ? campo.previousElementSibling.textContent.replace(':', '') : 'Campo';
+            erro.textContent = `O campo "${labelText.trim()}" é obrigatório.`;
+
+            // Insere a mensagem de erro APÓS o campo
+            campo.parentNode.insertBefore(erro, campo.nextSibling);
+        }
+        // Validação de E-mail
+        else if (campo.type === 'email' && !/\S+@\S+\.\S+/.test(campo.value)) {
+            formularioValido = false;
+            campo.classList.add("input-error");
+            
+            const erro = document.createElement("span");
+            erro.classList.add("error-message");
+            erro.textContent = `Por favor, insira um e-mail válido.`;
+            
+            campo.parentNode.insertBefore(erro, campo.nextSibling);
+        }
+        
+        // Se o campo for válido, salva os dados temporariamente
+        if (formularioValido && campo.name) {
+            novosDados[campo.name] = campo.value.trim();
+        }
+    });
+
+    // 3. Ação final
+    if (formularioValido) {
+        // Salva os dados e atualiza a lista
+        dadosCadastrados.push(novosDados);
+        renderizarVoluntarios();
+
+        alert("✅ Cadastro realizado com sucesso!");
+        form.reset();
+    } else {
+        const primeiroErro = form.querySelector(".input-error");
+        if (primeiroErro) {
+            // Rola a tela para o primeiro erro
+            primeiroErro.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    }
 }
 
 
@@ -99,7 +103,7 @@ function renderizarVoluntarios() {
 function initValidation() {
     const form = document.getElementById("form-cadastro");
     if (!form) {
-        // Se o formulário não for encontrado, tente renderizar a lista
+        console.warn("InitValidation: Formulário não encontrado. Tentando renderizar lista de voluntários.");
         renderizarVoluntarios();
         return;
     }

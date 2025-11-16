@@ -341,13 +341,14 @@ main {
 /* ======================================= */
 
 /* Aplica a borda e fundo vermelho no input */
-.input-group input.input-error { 
+/* Aumenta a especificidade para garantir que a borda apareça */
+.formulario-cadastro .input-group input.input-error { 
     border: 2px solid #e63946 !important; 
-    background-color: #ffe5e5;
+    background-color: #ffe5e5 !important; /* Adicionado !important aqui também */
 }
 
 /* Estiliza a mensagem de erro */
-.error-message {
+.formulario-cadastro .input-group .error-message {
     display: block;
     margin-top: 6px;
     font-size: 0.9rem;
@@ -358,7 +359,6 @@ main {
     border-radius: 4px;
     width: 100%;
 }
-
 
 /* ======================================= */
 /* 8. ESTILOS DO RODAPÉ (FOOTER) */
