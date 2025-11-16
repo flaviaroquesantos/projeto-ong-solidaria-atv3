@@ -51,7 +51,7 @@ async function carregarPagina(pagina) {
         if (pagina === "cadastro") {
             try {
                 // Importação dinâmica do módulo de validação
-                const module = await import("./assets/js/validation.js");
+                const module = await import("/assets/js/validation.js");
                 module.initValidation(); // Chama a função corrigida
             } catch (e) {
                 console.error("ERRO CRÍTICO: Falha ao carregar ou executar validation.js.", e);
