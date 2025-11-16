@@ -81,9 +81,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (pagina === "cadastro") {
                 try {
                     const module = await import("./assets/js/validation.js");
-                    module.initializeValidation();
+                    module.initValidation();
                 } catch (e) {
-                    console.warn("validation.js não encontrado.");
+                    console.warn("validation.js não encontrado ou inicialização falhou.", e);
                 }
             }
 
