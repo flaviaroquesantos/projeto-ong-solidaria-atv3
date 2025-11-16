@@ -1,7 +1,13 @@
 // assets/js/validation.js
 
-document.addEventListener("DOMContentLoaded", function () {
+// Torna a validação uma FUNÇÃO reutilizável no SPA
+function initializeValidation() {
+
     const form = document.getElementById("form-cadastro");
+    if (!form) {
+        console.warn("validation.js: formulário não encontrado — talvez a página ainda não foi carregada.");
+        return;
+    }
 
     form.addEventListener("submit", function (event) {
         event.preventDefault(); // impede o envio até validar
@@ -18,29 +24,29 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!campo.value.trim()) {
                 formularioValido = false;
 
-                // adiciona classe de erro no input
                 campo.classList.add("input-error");
 
-                // cria mensagem de erro
                 const erro = document.createElement("span");
                 erro.classList.add("error-message");
                 erro.textContent = `O campo "${campo.previousElementSibling.textContent.replace(':', '')}" é obrigatório.`;
 
-                // adiciona a mensagem logo abaixo do campo
                 campo.parentNode.appendChild(erro);
             }
         });
 
         if (formularioValido) {
-            // Tudo certo — simula envio
             alert("✅ Cadastro realizado com sucesso!");
             form.reset();
         } else {
-            // rola até o primeiro erro
             const primeiroErro = form.querySelector(".input-error");
             if (primeiroErro) {
                 primeiroErro.scrollIntoView({ behavior: "smooth", block: "center" });
             }
         }
     });
-});
+
+    console.log("Validação do formulário carregada com sucesso.");
+}
+
+// Exporta para o SPA chamar após carregar a página
+export { initializeValidation };

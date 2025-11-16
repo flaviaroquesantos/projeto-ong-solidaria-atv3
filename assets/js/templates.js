@@ -20,8 +20,8 @@ function createProjectCardTemplate(data) {
             <h3>${data.title}</h3>
             <p>${data.description}</p>
             <div class="indicadores">
-                <p>🌱 **Pessoas Impactadas:** ${data.impact}</p>
-                <p>🎯 **Progresso:** ${data.meta}</p>
+                <p>🌱 <strong>Pessoas Impactadas:</strong> ${data.impact}</p>
+                <p>🎯 <strong>Progresso:</strong> ${data.meta}</p>
             </div>
             <a href="#" class="cta-button">Apoie este Projeto</a>
         </article>
@@ -30,14 +30,15 @@ function createProjectCardTemplate(data) {
 
 // Função para injetar o template em um local específico do DOM
 function renderDynamicProjects() {
-    // Local onde você quer injetar o novo projeto (Ajuste o ID se necessário)
+    // Local onde você quer injetar o novo projeto
     const projectListContainer = document.getElementById('projetos-sociais'); 
 
     if (projectListContainer) {
         const newCardHTML = createProjectCardTemplate(projectData);
-        // Adiciona o novo card dinamicamente no início da lista
         projectListContainer.insertAdjacentHTML('beforeend', newCardHTML); 
         console.log("Projeto dinâmico injetado com sucesso.");
+    } else {
+        console.warn("ID #projetos-sociais não encontrado no DOM.");
     }
 }
 
