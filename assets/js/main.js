@@ -51,7 +51,15 @@ async function carregarPagina(pagina) {
         if (pagina === "cadastro") {
             try {
                 // Importação dinâmica do módulo de validação
-                const module = await import("/assets/js/validation.js");
+                if (pagina === "cadastro") {
+            try {
+                // Tenta importar usando o caminho do repositório (CRÍTICO para GitHub Pages)
+                const module = await import("/projeto-ong-solidaria-atv3/assets/js/validation.js");
+                module.initValidation(); 
+            } catch (e) {
+                console.error("ERRO CRÍTICO: Falha ao carregar ou executar validation.js.", e);
+            }
+        }
                 module.initValidation(); // Chama a função corrigida
             } catch (e) {
                 console.error("ERRO CRÍTICO: Falha ao carregar ou executar validation.js.", e);
