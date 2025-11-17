@@ -1,56 +1,80 @@
-📄 README.md: Projeto ONG Solidária
-🌟 Nome do Projeto
-Impacta+ | ONG Solidária
+# 🚀 Projeto ONG Solidária (Atividade 3)
 
-💻 Tecnologias Utilizadas
-O projeto é um site estático e responsivo desenvolvido utilizando as seguintes tecnologias:
+Este projeto simula o site de uma ONG e foi desenvolvido com foco em aprimorar habilidades em **JavaScript moderno (ES6 Modules, Fetch API)** e arquitetura de **Single Page Application (SPA)**, além de aplicar técnicas avançadas de layout com **CSS Grid** e validação de formulários.
 
-HTML5: Estrutura e semântica do conteúdo.
+## 🌟 Visão Geral e Funcionalidades
 
-CSS3: Estilização e layout (incluindo style.css e responsive.css).
+O objetivo principal desta versão é implementar o roteamento dinâmico (SPA) e garantir a validação robusta do formulário de cadastro, melhorando a experiência do usuário.
 
-JavaScript: Interatividade básica (arquivo main.js).
+### Principais Recursos
 
-Git & GitHub: Controle de versão e hospedagem.
+* **Single Page Application (SPA):** Navegação fluida entre `home`, `projetos` e `cadastro` sem recarregar a página, utilizando o roteamento baseado em Hash (`#/`).
+* **Importação Dinâmica de Módulos:** O JavaScript carrega os módulos (`validation.js`, `templates.js`) **apenas** quando a página correspondente (rota) é acessada, otimizando o carregamento inicial.
+* **Validação de Formulário:** O formulário de cadastro possui validação de campos obrigatórios e formato (e-mail), exibindo mensagens de erro e bordas vermelhas (estilos `.input-error`) dinamicamente.
+* **Layout Otimizado:** Uso de **CSS Grid** para criar um layout de 2 colunas no formulário de cadastro, melhorando a organização e centralização dos campos.
 
-📁 Estrutura do Projeto
-A estrutura de pastas segue as melhores práticas para organização e manutenção:
+---
 
-PROJETO-ONG-SOLIDARIA/
-├── assets/
-│   ├── css/
-│   │   ├── responsive.css
-│   │   └── style.css
-│   ├── img/  (Contém todas as imagens e ícones do site)
-│   └── js/
-│       └── main.js
-├── cadastro.html
-├── index.html
-└── projetos.html
-✨ Funcionalidades Implementadas
-O site possui três páginas principais totalmente funcionais no ambiente de desenvolvimento local:
+## 🛠️ Tecnologias Utilizadas
 
-Página Inicial (index.html): Apresenta a missão, trajetória e conquistas da ONG.
+| Tecnologia | Finalidade |
+| :--- | :--- |
+| **HTML5** | Estrutura semântica e acessível. |
+| **CSS3** | Estilização, layout responsivo e uso de **CSS Grid**. |
+| **JavaScript (ES6+)** | Lógica de SPA, manipulação da DOM, `fetch` e **Módulos ES6** (`import`). |
 
-Projetos (projetos.html): Detalha os projetos e as formas de auxílio.
+---
 
-Junte-se a Nós! (cadastro.html): Contém formulários de cadastro para voluntários e um formulário para doações, com campos radio button e campos de texto.
+## 📁 Estrutura de Arquivos
 
-✅ Validação do Código
-O código HTML foi validado (Nu Html Checker) e os erros de validação foram corrigidos antes da entrega final:
+A organização do projeto segue o padrão de separação de responsabilidades:
 
-Correção no Formulário: Removidos IDs duplicados e tags <label> redundantes na seção de doação, garantindo a acessibilidade e validação do <fieldset>.
+Com certeza! Aqui está o conteúdo do README.md completo, no formato Markdown, pronto para você copiar e colar no seu repositório do GitHub.
 
-⚠️ Observação Técnica Crítica sobre o Deploy (GitHub Pages)
-O link público do projeto no GitHub Pages apresenta falhas visuais (menu quebrado e imagens faltando), mas o código-fonte está funcional.
+📝 README.md Completo
+Markdown
 
-Causa do Problema: A falha é de origem técnica no ambiente de hospedagem do GitHub Pages e não um erro de programação HTML/CSS:
+# 🚀 Projeto ONG Solidária (Atividade 3)
 
-Falha de Build: O GitHub Actions gerou um erro crítico de build (o "X" vermelho) devido a uma configuração acidental de submódulo Git (No url found for submodule path...).
+Este projeto simula o site de uma ONG e foi desenvolvido com foco em aprimorar habilidades em **JavaScript moderno (ES6 Modules, Fetch API)** e arquitetura de **Single Page Application (SPA)**, além de aplicar técnicas avançadas de layout com **CSS Grid** e validação de formulários.
 
-Impacto no Site: Mesmo após a limpeza do Git local, esta falha de build persiste no servidor, impedindo que o GitHub Pages encontre os arquivos estáticos (CSS e Imagens), resultando em erros 404 (Not Found) no console.
+## 🌟 Visão Geral e Funcionalidades
 
-Conclusão: O código (HTML, CSS, JS) está completo e funcional e deve ser avaliado com base nos arquivos no repositório. O problema de exibição no link público é uma falha de infraestrutura do GitHub Pages.
+O objetivo principal desta versão é implementar o roteamento dinâmico (SPA) e garantir a validação robusta do formulário de cadastro, melhorando a experiência do usuário.
 
-🔗 Link do Repositório
-https://docs.github.com/pt/repositories/creating-and-managing-repositories/quickstart-for-repositories
+### Principais Recursos
+
+* **Single Page Application (SPA):** Navegação fluida entre `home`, `projetos` e `cadastro` sem recarregar a página, utilizando o roteamento baseado em Hash (`#/`).
+* **Importação Dinâmica de Módulos:** O JavaScript carrega os módulos (`validation.js`, `templates.js`) **apenas** quando a página correspondente (rota) é acessada, otimizando o carregamento inicial.
+* **Validação de Formulário:** O formulário de cadastro possui validação de campos obrigatórios e formato (e-mail), exibindo mensagens de erro e bordas vermelhas (estilos `.input-error`) dinamicamente.
+* **Layout Otimizado:** Uso de **CSS Grid** para criar um layout de 2 colunas no formulário de cadastro, melhorando a organização e centralização dos campos.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+| Tecnologia | Finalidade |
+| :--- | :--- |
+| **HTML5** | Estrutura semântica e acessível. |
+| **CSS3** | Estilização, layout responsivo e uso de **CSS Grid**. |
+| **JavaScript (ES6+)** | Lógica de SPA, manipulação da DOM, `fetch` e **Módulos ES6** (`import`). |
+
+---
+
+## 📁 Estrutura de Arquivos
+
+A organização do projeto segue o padrão de separação de responsabilidades:
+
+PROJETO-ONG-SOLIDARIA-ATV3/ ├── assets/ │ ├── css/ │ │ ├── style.css # Estilos gerais, Layout Grid e regras de validação. │ │ └── variables.css # Variáveis CSS. │ └── js/ │ ├── main.js # O ROTEADOR SPA (Lógica principal). │ ├── templates.js # Lógica para renderizar projetos. │ └── validation.js # MÓDULO: Lógica de validação do formulário de cadastro. ├── cadastro.html # Conteúdo da página de cadastro (<main>). ├── home.html # Conteúdo da página inicial (<main>). ├── index.html # Arquivo base (carrega apenas main.js). └── projetos.html # Conteúdo da página de projetos (<main>).].
+
+---
+
+## 📝 Como Usar o Projeto (Rodando Localmente)
+
+1.  **Clone o repositório.**
+2.  **Abra o arquivo `index.html`** em seu navegador.
+3.  **Navegue** pelas rotas (`#/projetos`, `#/cadastro`).
+
+### Ponto de Atenção (GitHub Pages)
+
+O arquivo `assets/js/main.js` foi configurado com um caminho absoluto (`/projeto-ong-solidaria-atv3/assets/js/validation.js`) para garantir que a importação dinâmica funcione corretamente no ambiente do GitHub Pages, resolvendo o erro `404 Not Found` que ocorria devido à subpasta do projeto. Se você hospedar em outro lugar, pode ser necessário ajustar o caminho de importação.
