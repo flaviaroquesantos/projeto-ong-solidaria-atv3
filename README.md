@@ -29,42 +29,6 @@ O objetivo principal desta versão é implementar o roteamento dinâmico (SPA) e
 
 A organização do projeto segue o padrão de separação de responsabilidades:
 
-Com certeza! Aqui está o conteúdo do README.md completo, no formato Markdown, pronto para você copiar e colar no seu repositório do GitHub.
-
-📝 README.md Completo
-Markdown
-
-# 🚀 Projeto ONG Solidária (Atividade 3)
-
-Este projeto simula o site de uma ONG e foi desenvolvido com foco em aprimorar habilidades em **JavaScript moderno (ES6 Modules, Fetch API)** e arquitetura de **Single Page Application (SPA)**, além de aplicar técnicas avançadas de layout com **CSS Grid** e validação de formulários.
-
-## 🌟 Visão Geral e Funcionalidades
-
-O objetivo principal desta versão é implementar o roteamento dinâmico (SPA) e garantir a validação robusta do formulário de cadastro, melhorando a experiência do usuário.
-
-### Principais Recursos
-
-* **Single Page Application (SPA):** Navegação fluida entre `home`, `projetos` e `cadastro` sem recarregar a página, utilizando o roteamento baseado em Hash (`#/`).
-* **Importação Dinâmica de Módulos:** O JavaScript carrega os módulos (`validation.js`, `templates.js`) **apenas** quando a página correspondente (rota) é acessada, otimizando o carregamento inicial.
-* **Validação de Formulário:** O formulário de cadastro possui validação de campos obrigatórios e formato (e-mail), exibindo mensagens de erro e bordas vermelhas (estilos `.input-error`) dinamicamente.
-* **Layout Otimizado:** Uso de **CSS Grid** para criar um layout de 2 colunas no formulário de cadastro, melhorando a organização e centralização dos campos.
-
----
-
-## 🛠️ Tecnologias Utilizadas
-
-| Tecnologia | Finalidade |
-| :--- | :--- |
-| **HTML5** | Estrutura semântica e acessível. |
-| **CSS3** | Estilização, layout responsivo e uso de **CSS Grid**. |
-| **JavaScript (ES6+)** | Lógica de SPA, manipulação da DOM, `fetch` e **Módulos ES6** (`import`). |
-
----
-
-## 📁 Estrutura de Arquivos
-
-A organização do projeto segue o padrão de separação de responsabilidades:
-
 PROJETO-ONG-SOLIDARIA-ATV3/ ├── assets/ │ ├── css/ │ │ ├── style.css # Estilos gerais, Layout Grid e regras de validação. │ │ └── variables.css # Variáveis CSS. │ └── js/ │ ├── main.js # O ROTEADOR SPA (Lógica principal). │ ├── templates.js # Lógica para renderizar projetos. │ └── validation.js # MÓDULO: Lógica de validação do formulário de cadastro. ├── cadastro.html # Conteúdo da página de cadastro (<main>). ├── home.html # Conteúdo da página inicial (<main>). ├── index.html # Arquivo base (carrega apenas main.js). └── projetos.html # Conteúdo da página de projetos (<main>).].
 
 ---
